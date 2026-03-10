@@ -1,0 +1,2 @@
+These are notes and references to help me develop this code.
+
