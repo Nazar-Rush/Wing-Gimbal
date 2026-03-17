@@ -1,6 +1,7 @@
 # If picamera2 is missing, install it with:
 # sudo apt update
 # sudo apt install -y python3-picamera2
+# sudo apt install -y rpicam-apps-lite python3-picamera2
 
 
 import time
