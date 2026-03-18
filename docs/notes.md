@@ -15,7 +15,7 @@ In boot/config.txt (edit sd card, not over ssh), add to the bottom of the file (
 
 In boot/cmdline.txt
 
-- add to the end of line: vc4.tv_norm=NTSC
+- add to the end of line: vc4.tv_norm=NTSC video=Composite-1:720x480@60ie
 
 ## Useful Commands
 
