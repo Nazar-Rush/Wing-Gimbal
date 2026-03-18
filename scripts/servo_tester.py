@@ -50,7 +50,7 @@ if not (MIN_ANGLE <= angle <= MAX_ANGLE):
 servo = AngularServo(pin, min_angle=MIN_ANGLE, max_angle=MAX_ANGLE)
 try:
     servo.angle = angle
-    print(f"Set servo to {angle} deg")
+    print(f"Set servo GPIO{pin} to {angle} deg")
     while True:
         time.sleep(1)
 except KeyboardInterrupt:
