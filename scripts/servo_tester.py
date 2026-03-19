@@ -13,8 +13,8 @@ import time
 
 MIN_ANGLE = 0
 MAX_ANGLE = 180
-MIN_PW = 1000
-MAX_PW = 2000
+MIN_PW = 500
+MAX_PW = 2500
 
 
 # convert angle to pulse width
