@@ -8,18 +8,19 @@
 # sudo apt update
 # sudo apt install python3-gpiozero
 import sys
-from gpiozero import AngularServo
+import pigpio
 import time
 
-# MIN_PW = 500
-# MAX_PW = 2500
 MIN_ANGLE = 0
 MAX_ANGLE = 180
+MIN_PW = 1000
+MAX_PW = 2000
 
 
-# def angle_to_pulsewidth(angle):
-#     angle = max(0, min(180, angle))
-#     return int(MIN_PW + (angle / 180.0) * (MAX_PW - MIN_PW))
+# convert angle to pulse width
+def angle_to_pulsewidth(angle):
+    angle = max(0, min(180, angle))
+    return int(MIN_PW + (angle / 180.0) * (MAX_PW - MIN_PW))
 
 
 # check command line argument count
@@ -46,32 +47,21 @@ if not (MIN_ANGLE <= angle <= MAX_ANGLE):
     print(f"Angle must be between {MIN_ANGLE} and {MAX_ANGLE}.")
     sys.exit(1)
 
-# set angle
-servo = AngularServo(pin, min_angle=MIN_ANGLE, max_angle=MAX_ANGLE)
+# connect to pigpio daemon
+pi = pigpio.pi()
+if not pi.connected:
+    print("Could not connect to pigpio daemon.")
+    sys.exit(1)
+
+# set servo pulse width
 try:
-    servo.angle = angle
-    print(f"Set servo GPIO{pin} to {angle} deg")
+    pw = angle_to_pulsewidth(angle)
+    pi.set_servo_pulsewidth(pin, pw)
+    print(f"Set servo to {angle} deg ({pw} us)")
     while True:
         time.sleep(1)
 except KeyboardInterrupt:
     pass
 finally:
-    servo.detach()
-
-
-# pi = pigpio.pi()
-# if not pi.connected:
-#     print("Could not connect to pigpio daemon.")
-#     sys.exit(1)
-
-# try:
-#     pw = angle_to_pulsewidth(angle)
-#     pi.set_servo_pulsewidth(pin, pw)
-#     print(f"Set servo to {angle} deg ({pw} us)")
-#     while True:
-#         time.sleep(1)
-# except KeyboardInterrupt:
-#     pass
-# finally:
-#     pi.set_servo_pulsewidth(pin, 0)
-#     pi.stop()
+    pi.set_servo_pulsewidth(pin, 0)
+    pi.stop()
