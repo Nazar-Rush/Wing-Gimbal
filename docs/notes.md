@@ -20,3 +20,5 @@ In boot/cmdline.txt
 ## Useful Commands
 
 rpicam-hello --list-cameras -> lists cameras detected
+
+# Servo
