@@ -4,6 +4,11 @@
 # https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
 # https://www.raspberrypi.com/documentation/computers/images/GPIO-Pinout-Diagram-2.png?hash=df7d7847c57a1ca6d5b2617695de6d46
 # pin is gpio number not physical pin number, so for example GPIO18 is pin 12 on the header.
+# ex: python servo_tester.py 18 90
+
+# zoom 90-180
+# shutter 0-70
+# focus 0-95
 
 # sudo apt update
 # sudo apt install python3-gpiozero
