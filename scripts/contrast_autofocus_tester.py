@@ -42,8 +42,8 @@ SERVO_MAX_US = 1000  # Tune carefully for your lens mechanism
 SERVO_START_US = 750  # Safe-ish starting point
 SERVO_SETTLE_S = 0.18  # Time for the servo/focus ring to settle after a move
 
-FRAME_WIDTH = 1920
-FRAME_HEIGHT = 1080
+FRAME_WIDTH = 2560
+FRAME_HEIGHT = 1600
 ROI_FRACTION = 0.35  # Central ROI size as fraction of frame size
 
 COARSE_STEP_US = 40
