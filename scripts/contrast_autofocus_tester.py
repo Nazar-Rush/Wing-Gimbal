@@ -27,7 +27,7 @@ import math
 import argparse
 from statistics import fmean
 
-import cv2
+import cv2  # pip install opencv-python
 import numpy as np
 import pigpio
 from picamera2 import Picamera2
@@ -273,9 +273,8 @@ def draw_overlay(bgr_frame, roi, pulse_us, score, locked):
     return out
 
 
-def save_rgb_as_jpg(rgb_frame, path):
-    bgr = cv2.cvtColor(rgb_frame, cv2.COLOR_RGB2BGR)
-    cv2.imwrite(path, bgr)
+def save_rgb_as_jpg(frame, path):
+    cv2.imwrite(path, frame)
 
 
 def main():
@@ -392,9 +391,8 @@ def main():
             rgb = picam2.capture_array("main")
             last_score = sharpness_score(rgb, roi)
 
-            bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
             display = draw_overlay(
-                bgr,
+                rgb,
                 roi=roi,
                 pulse_us=servo.current_us,
                 score=last_score,
