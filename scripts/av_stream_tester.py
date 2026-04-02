@@ -6,6 +6,7 @@
 # sudo apt install -y python3-picamera2
 # sudo apt install -y rpicam-apps-lite python3-picamera2
 
+# this script streams the camera stream to the video transmitter over av
 
 import time
 from picamera2 import Picamera2, Preview
